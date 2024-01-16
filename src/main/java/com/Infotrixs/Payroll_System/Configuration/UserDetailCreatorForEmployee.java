@@ -1,4 +1,4 @@
-package com.Infotrixs.Payroll_System.configuration;
+package com.Infotrixs.Payroll_System.Configuration;
 
 import com.Infotrixs.Payroll_System.Models.Employee;
 import org.springframework.security.core.GrantedAuthority;

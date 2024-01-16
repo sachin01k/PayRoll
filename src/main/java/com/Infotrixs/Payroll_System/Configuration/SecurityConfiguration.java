@@ -1,4 +1,4 @@
-package com.Infotrixs.Payroll_System.configuration;
+package com.Infotrixs.Payroll_System.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
