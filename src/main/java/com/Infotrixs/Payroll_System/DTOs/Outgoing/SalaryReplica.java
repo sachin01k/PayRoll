@@ -1,6 +1,5 @@
-package com.Infotrixs.Payroll_System.Models;
+package com.Infotrixs.Payroll_System.DTOs.Outgoing;
 
-import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -10,11 +9,9 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
-@Entity
-@Table(name = "salaries")
-public class Salary {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class SalaryReplica {
+    String employeeName;
+
     int salaryId;
 
     float base;
@@ -28,9 +25,4 @@ public class Salary {
     float insurance;
 
     float inHand;
-
-    // relations
-    @OneToOne
-    @JoinColumn(name = "employee_id")
-    Employee employee;
 }
