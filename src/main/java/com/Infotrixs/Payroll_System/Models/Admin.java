@@ -29,15 +29,17 @@ public class Admin {
 
     @Column(nullable = false, unique = true)
     @Size(min = 10, max = 10)
-    int phone;
+    String phone;
 
     @Column(nullable = false, unique = true)
     @Size(min = 4, max = 10)
     String username;
 
     @Column(nullable = false)
-    @Size(min = 6, max = 12)
+    @Size(min = 6)
     String password;
+
+    String passwordResetReqId;
 
     final String authToken = "AUTHORIZED_ADMIN0542";
 

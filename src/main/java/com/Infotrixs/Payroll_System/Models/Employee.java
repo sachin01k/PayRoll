@@ -1,5 +1,6 @@
 package com.Infotrixs.Payroll_System.Models;
 
+import com.Infotrixs.Payroll_System.Enums.AccountAccess;
 import com.Infotrixs.Payroll_System.Enums.Department;
 import com.Infotrixs.Payroll_System.Enums.EmploymentLevel;
 import jakarta.persistence.*;
@@ -9,6 +10,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -33,14 +35,14 @@ public class Employee {
 
     @Column(nullable = false, unique = true)
     @Size(min = 10, max = 10)
-    int phone;
+    String phone;
 
     @Column(nullable = false, unique = true)
     @Size(min = 4, max = 10)
     String username;
 
     @Column(nullable = false)
-    @Size(min = 6, max = 12)
+    @Size(min = 6)
     String password;
 
     // employment details
@@ -55,7 +57,8 @@ public class Employee {
     @Column(nullable = false)
     String designation;
 
-    boolean authorized = true;
+    @Enumerated(EnumType.STRING)
+    AccountAccess access = AccountAccess.GRANTED;
 
     final String role = "ROLE_EMPLOYEE";
 
@@ -64,16 +67,20 @@ public class Employee {
     String bankAccNo;
 
     @Column(nullable = false)
-    String IFSC;
+    String ifsc;
 
     // payment-related details
-    int prevDue = 0;
+    float prevDue = 0;
+
     int unpaidLeaves = 0;
+
+    String passwordResetReqId;
 
     // relations
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     Salary salary;
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    ArrayList<PaySlip> payslips = new ArrayList<>();
+    List<PaySlip> payslips = new ArrayList<>();
+
 }

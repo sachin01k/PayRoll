@@ -1,4 +1,4 @@
-package com.Infotrixs.Payroll_System.Configuration;
+package com.Infotrixs.Payroll_System.Configurations;
 
 import com.Infotrixs.Payroll_System.Models.Admin;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,8 +20,8 @@ public class UserDetailCreatorForAdmin implements UserDetails {
         this.password = admin.getPassword();
 
         this.authorities = new ArrayList<>();
-        String roles[] = admin.getRole().split(",");
 
+        String[] roles = admin.getRole().split(",");
         for(String role: roles){
             SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(role);
             authorities.add(simpleGrantedAuthority);

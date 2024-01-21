@@ -1,4 +1,4 @@
-package com.Infotrixs.Payroll_System.DTOs;
+package com.Infotrixs.Payroll_System.DTOs.Incoming;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -11,9 +11,14 @@ import lombok.experimental.FieldDefaults;
 @Builder
 public class NewAdminRequest {
     String name;
+
     String email;
-    int phone;
+
+    String phone;
+
     String username;
+
     String password;
+
     String authToken;
 }
