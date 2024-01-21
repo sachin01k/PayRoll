@@ -1,6 +1,9 @@
 package com.Infotrixs.Payroll_System.Controllers;
 
+import com.Infotrixs.Payroll_System.DTOs.Outgoing.AllPaymentRecords;
 import com.Infotrixs.Payroll_System.DTOs.Outgoing.DueSalaryDetails;
+import com.Infotrixs.Payroll_System.DTOs.Outgoing.SalaryReplica;
+import com.Infotrixs.Payroll_System.Services.Impl.AdminServiceImpl;
 import com.Infotrixs.Payroll_System.Services.Impl.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
+
     final EmployeeServiceImpl employeeService;
     @Autowired
     public EmployeeController(EmployeeServiceImpl employeeService) {
@@ -47,5 +51,24 @@ public class EmployeeController {
     }
 
     // make your APIs here
+    @GetMapping("/see-payment-records/employee-id/{employeeId}")
+    public ResponseEntity seePaymentRecords(@PathVariable("employeeId") int empId){
+        try{
+            AllPaymentRecords response = employeeService.seePaymentRecords(empId);
+            return new ResponseEntity(response, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
 
+    @GetMapping("/see-salary-structure/employee-id/{employeeId}")
+    public ResponseEntity seeSalaryStructure(@PathVariable("employeeId") int empId){
+        try{
+            SalaryReplica response = employeeService.seeSalaryStructure(empId);
+            return new ResponseEntity (response, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity (e.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
+    //Done
 }

@@ -1,6 +1,8 @@
 package com.Infotrixs.Payroll_System.Services;
 
+import com.Infotrixs.Payroll_System.DTOs.Outgoing.AllPaymentRecords;
 import com.Infotrixs.Payroll_System.DTOs.Outgoing.DueSalaryDetails;
+import com.Infotrixs.Payroll_System.DTOs.Outgoing.SalaryReplica;
 
 public interface EmployeeService {
     String passwordResetRequest(int empId);
@@ -8,4 +10,8 @@ public interface EmployeeService {
     String resetPassword(int empId, String otp, String newPassword);
 
     DueSalaryDetails seeDueSalaryDetails(int empId);
+
+    AllPaymentRecords seePaymentRecords(int empId);
+
+    SalaryReplica seeSalaryStructure(int empId);
 }

@@ -1,11 +1,19 @@
 package com.Infotrixs.Payroll_System.Services.Impl;
 
+import com.Infotrixs.Payroll_System.DTOs.Outgoing.AllPaymentRecords;
 import com.Infotrixs.Payroll_System.DTOs.Outgoing.DueSalaryDetails;
+<<<<<<< HEAD
 import com.Infotrixs.Payroll_System.Enums.AccountAccess;
 import com.Infotrixs.Payroll_System.Exceptions.AccountAccessRestrictedException;
+=======
+import com.Infotrixs.Payroll_System.DTOs.Outgoing.PaySlipReplica;
+import com.Infotrixs.Payroll_System.DTOs.Outgoing.SalaryReplica;
+>>>>>>> f051e62786ad4af457f8aea94481ebaeef220c67
 import com.Infotrixs.Payroll_System.Exceptions.EmployeeNotFoundException;
 import com.Infotrixs.Payroll_System.Exceptions.InvalidOTPException;
+import com.Infotrixs.Payroll_System.Exceptions.NoRecordsFoundException;
 import com.Infotrixs.Payroll_System.Models.Employee;
+import com.Infotrixs.Payroll_System.Models.PaySlip;
 import com.Infotrixs.Payroll_System.Models.Salary;
 import com.Infotrixs.Payroll_System.Repositories.EmployeeRepository;
 import com.Infotrixs.Payroll_System.Services.EmployeeService;
@@ -18,6 +26,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -100,5 +110,49 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         // prepare due salary details to send as response
         return Converter.prepareDueSalaryDetails(employee, salary);
+    }
+
+    @Override
+    public AllPaymentRecords seePaymentRecords(int empId){
+        Optional<Employee> employeeOptional = employeeRepository.findById(empId);
+        if(employeeOptional.isEmpty()){
+            throw new EmployeeNotFoundException("Employee does not exists.");
+        }
+        // validate employee access
+        if(employeeOptional.get().getAccess().equals(AccountAccess.RESTRICTED)){
+            throw new AccountAccessRestrictedException("You account access is restricted.");
+        }
+        // get all previous payment records of the employee
+        Employee employee = employeeOptional.get();
+        List<PaySlip> paySlipList = employee.getPayslips();
+        if(paySlipList.isEmpty()){
+            throw new NoRecordsFoundException("No previous payment records were found.");
+        }
+        // iterate over employee's payslip and create their replicas to send to the user
+        List<PaySlipReplica> paySlipReplicaList = new ArrayList<>();
+        for(PaySlip paySlip : paySlipList){
+            PaySlipReplica paySlipReplica = Converter.preparePaySlipReplica(paySlip);
+            paySlipReplicaList.add(paySlipReplica);
+        }
+        // add payslip replica list to all payment records and send it to user
+        return AllPaymentRecords.builder()
+                .paymentRecords(paySlipReplicaList)
+                .build();
+    }
+
+    @Override
+    public SalaryReplica seeSalaryStructure(int empId) {
+        // validate employee
+        Optional<Employee> employeeOptional = employeeRepository.findById(empId);
+        if(employeeOptional.isEmpty()){
+            throw new EmployeeNotFoundException("Employee does not exists.");
+        }
+        // validate employee access
+        if(employeeOptional.get().getAccess().equals(AccountAccess.RESTRICTED)){
+            throw new AccountAccessRestrictedException("You account access is restricted.");
+        }
+        Employee employee = employeeOptional.get();
+        // prepare a salary replica to send to the user
+        return Converter.prepareSalaryReplica(employee);
     }
 }
