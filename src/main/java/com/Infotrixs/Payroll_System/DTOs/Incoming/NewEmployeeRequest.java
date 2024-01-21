@@ -26,8 +26,6 @@ public class NewEmployeeRequest {
 
     EmploymentLevel employmentLevel;
 
-    String designation;
-
     String bankAccNo;
 
     String ifsc;

@@ -1,6 +1,8 @@
 package com.Infotrixs.Payroll_System.Services.Impl;
 
 import com.Infotrixs.Payroll_System.DTOs.Outgoing.EmployeeLoginDetails;
+import com.Infotrixs.Payroll_System.Enums.AccountAccess;
+import com.Infotrixs.Payroll_System.Exceptions.AccountAccessRestrictedException;
 import com.Infotrixs.Payroll_System.Exceptions.InvalidInputException;
 import com.Infotrixs.Payroll_System.Models.Employee;
 import com.Infotrixs.Payroll_System.Repositories.EmployeeRepository;
@@ -28,6 +30,10 @@ public class EmployeeLoginServiceImpl implements EmployeeLoginService {
         String employeeUsername = authentication.getName();
         // get employee
         Employee employee = employeeRepository.findByUsername(employeeUsername);
+        // validate employee access
+        if(employee.getAccess().equals(AccountAccess.RESTRICTED)){
+            throw new AccountAccessRestrictedException("You account access is restricted.");
+        }
         // return name and ID
         return EmployeeLoginDetails.builder()
                 .employeeId(employee.getEmpId())

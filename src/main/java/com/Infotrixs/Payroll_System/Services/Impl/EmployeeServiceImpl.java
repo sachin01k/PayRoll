@@ -1,6 +1,8 @@
 package com.Infotrixs.Payroll_System.Services.Impl;
 
 import com.Infotrixs.Payroll_System.DTOs.Outgoing.DueSalaryDetails;
+import com.Infotrixs.Payroll_System.Enums.AccountAccess;
+import com.Infotrixs.Payroll_System.Exceptions.AccountAccessRestrictedException;
 import com.Infotrixs.Payroll_System.Exceptions.EmployeeNotFoundException;
 import com.Infotrixs.Payroll_System.Exceptions.InvalidOTPException;
 import com.Infotrixs.Payroll_System.Models.Employee;
@@ -38,6 +40,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         if(employeeOptional.isEmpty()){
             throw new EmployeeNotFoundException("Employee does not exists.");
         }
+        // validate employee access
+        if(employeeOptional.get().getAccess().equals(AccountAccess.RESTRICTED)){
+            throw new AccountAccessRestrictedException("You account access is restricted.");
+        }
         // if employee is valid, generate a unique key for validation
         String uniqueId = KeyGenerator.generateUniqueKey();
         Employee employee = employeeOptional.get();
@@ -56,6 +62,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         Optional<Employee> employeeOptional = employeeRepository.findById(empId);
         if(employeeOptional.isEmpty()){
             throw new EmployeeNotFoundException("Employee does not exists.");
+        }
+        // validate employee access
+        if(employeeOptional.get().getAccess().equals(AccountAccess.RESTRICTED)){
+            throw new AccountAccessRestrictedException("You account access is restricted.");
         }
         Employee employee = employeeOptional.get();
         // validate OTP
@@ -79,6 +89,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         Optional<Employee> employeeOptional = employeeRepository.findById(empId);
         if(employeeOptional.isEmpty()){
             throw new EmployeeNotFoundException("Employee does not exists.");
+        }
+        // validate employee access
+        if(employeeOptional.get().getAccess().equals(AccountAccess.RESTRICTED)){
+            throw new AccountAccessRestrictedException("You account access is restricted.");
         }
         // get employee
         Employee employee = employeeOptional.get();

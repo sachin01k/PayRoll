@@ -158,6 +158,8 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public String addNewEmployee(NewEmployeeRequest request) {
+        // Define employee's designation based on department and employment level
+        String designation = defineDesignation(request.getDepartment(), request.getEmploymentLevel());
         // create a new Employee
         Employee employee = Employee.builder()
                 .name(request.getName())
@@ -168,7 +170,7 @@ public class AdminServiceImpl implements AdminService {
                 .department(request.getDepartment())
                 .employmentLevel(request.getEmploymentLevel())
                 .access(AccountAccess.GRANTED)
-                .designation(request.getDesignation())
+                .designation(designation)
                 .bankAccNo(request.getBankAccNo())
                 .ifsc(request.getIfsc())
                 .build();
@@ -183,6 +185,66 @@ public class AdminServiceImpl implements AdminService {
         savedEmployee.setSalary(savedSalary);
 
         return "Employee was registered with employee ID "+savedEmployee.getEmpId()+".";
+    }
+
+    private String defineDesignation(Department department, EmploymentLevel level) {
+        String designation = "";
+        if(department == Department.SALES){
+            if (level == EmploymentLevel.TRAINEE){
+                designation = "Trainee Sales Executive";
+            } else if (level == EmploymentLevel.ASSOCIATE){
+                designation = "Associate Sale Executive";
+            } else if (level == EmploymentLevel.SENIOR){
+                designation = "Senior Sale Executive";
+            } else if (level == EmploymentLevel.MANAGER){
+                designation = "Sales Manager";
+            }
+        }
+        else if(department == Department.MARKETING){
+            if (level == EmploymentLevel.TRAINEE){
+                designation = "Trainee Marketing Executive";
+            } else if (level == EmploymentLevel.ASSOCIATE){
+                designation = "Associate Marketing Executive";
+            } else if (level == EmploymentLevel.SENIOR){
+                designation = "Senior Marketing Executive";
+            } else if (level == EmploymentLevel.MANAGER){
+                designation = "Marketing Head";
+            }
+        }
+        else if(department == Department.ENGINEERING){
+            if (level == EmploymentLevel.TRAINEE){
+                designation = "Trainee Software Engineer";
+            } else if (level == EmploymentLevel.ASSOCIATE){
+                designation = "Associate Software Engineer";
+            } else if (level == EmploymentLevel.SENIOR){
+                designation = "Senior Software Engineer";
+            } else if (level == EmploymentLevel.MANAGER){
+                designation = "Project Manager";
+            }
+        }
+        else if(department == Department.FINANCE){
+            if (level == EmploymentLevel.TRAINEE){
+                designation = "Trainee Financial Analyst";
+            } else if (level == EmploymentLevel.ASSOCIATE){
+                designation = "Associate Financial Analyst";
+            } else if (level == EmploymentLevel.SENIOR){
+                designation = "Senior Financial Analyst";
+            } else if (level == EmploymentLevel.MANAGER){
+                designation = "Financial Analyst Manager";
+            }
+        }
+        else if(department == Department.HR){
+            if (level == EmploymentLevel.TRAINEE){
+                designation = "Staffing Coordinator";
+            } else if (level == EmploymentLevel.ASSOCIATE){
+                designation = "HR Associate";
+            } else if (level == EmploymentLevel.SENIOR){
+                designation = "Senior HR Manager";
+            } else if (level == EmploymentLevel.MANAGER){
+                designation = "Employee Relations Manager";
+            }
+        }
+        return designation;
     }
 
     @Override
