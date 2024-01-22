@@ -1,11 +1,8 @@
 package com.Infotrixs.Payroll_System.Services.Impl;
 
 import com.Infotrixs.Payroll_System.DTOs.Outgoing.*;
-//<<<<<<< HEAD
 import com.Infotrixs.Payroll_System.Enums.AccountAccess;
 import com.Infotrixs.Payroll_System.Exceptions.AccountAccessRestrictedException;
-//=======
-//>>>>>>> f051e62786ad4af457f8aea94481ebaeef220c67
 import com.Infotrixs.Payroll_System.Exceptions.EmployeeNotFoundException;
 import com.Infotrixs.Payroll_System.Exceptions.InvalidOTPException;
 import com.Infotrixs.Payroll_System.Exceptions.NoRecordsFoundException;
