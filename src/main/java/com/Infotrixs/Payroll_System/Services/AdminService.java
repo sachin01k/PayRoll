@@ -14,28 +14,17 @@ public interface AdminService {
     String passwordResetRequest(int adminId);
     String resetPassword(int adminId, String otp, String newPassword);
     String addNewEmployee(NewEmployeeRequest request);
-
     String updateDepartment(int empId, Department newDepartment);
-
     String updateEmploymentLevel(int empId, EmploymentLevel newLevel);
-
     String updateEmployeeAccess(int empId);
-
     String recordUnpaidLeave(int empId, int leaves);
-
     DueSalaryDetails seeDueSalaryOfAnEmployee(int empId);
-
     String recordPreviousDueOfAnEmployee(int empId, float amount);
-
     PaySlipReplica paySalaryAndGeneratePaySlipOfAnEmployee(int empId);
-
     SalaryReplica seeSalaryStructureOfAnEmployee(int empId);
-
     AllDueSalaries seeDueSalaries();
-
     AllPaymentRecords seePaymentRecordsOfAnEmployee(int empId);
-
     AllPaymentRecords seePaymentRecords();
-
     String deleteAnEmployee(int empId);
+    AdminDetails seeAccountDetails(int adminId);
 }

@@ -208,4 +208,14 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/see-account-details/admin-id/{adminId}")
+    public ResponseEntity seeAccountDetails(@PathVariable("adminId") int adminId){
+        try{
+            AdminDetails response = adminService.seeAccountDetails(adminId);
+            return new ResponseEntity(response, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
+
 }

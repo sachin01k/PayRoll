@@ -2,6 +2,7 @@ package com.Infotrixs.Payroll_System.Controllers;
 
 import com.Infotrixs.Payroll_System.DTOs.Outgoing.AllPaymentRecords;
 import com.Infotrixs.Payroll_System.DTOs.Outgoing.DueSalaryDetails;
+import com.Infotrixs.Payroll_System.DTOs.Outgoing.EmployeeDetails;
 import com.Infotrixs.Payroll_System.DTOs.Outgoing.SalaryReplica;
 import com.Infotrixs.Payroll_System.Services.Impl.AdminServiceImpl;
 import com.Infotrixs.Payroll_System.Services.Impl.EmployeeServiceImpl;
@@ -50,7 +51,6 @@ public class EmployeeController {
         }
     }
 
-    // make your APIs here
     @GetMapping("/see-payment-records/employee-id/{employeeId}")
     public ResponseEntity seePaymentRecords(@PathVariable("employeeId") int empId){
         try{
@@ -70,5 +70,14 @@ public class EmployeeController {
             return new ResponseEntity (e.getMessage(), HttpStatus.FORBIDDEN);
         }
     }
-    //Done
+
+    @GetMapping("/see-account-details/employee-id/{employeeId}")
+    public ResponseEntity seeAccountDetails(@PathVariable("employeeId") int empId){
+        try{
+            EmployeeDetails response = employeeService.seeAccountDetails(empId);
+            return new ResponseEntity (response, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity (e.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
 }

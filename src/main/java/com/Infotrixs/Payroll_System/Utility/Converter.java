@@ -1,9 +1,8 @@
 package com.Infotrixs.Payroll_System.Utility;
 
-import com.Infotrixs.Payroll_System.DTOs.Outgoing.DueSalaryDetails;
-import com.Infotrixs.Payroll_System.DTOs.Outgoing.PaySlipReplica;
-import com.Infotrixs.Payroll_System.DTOs.Outgoing.SalaryReplica;
+import com.Infotrixs.Payroll_System.DTOs.Outgoing.*;
 import com.Infotrixs.Payroll_System.Enums.PaymentStatus;
+import com.Infotrixs.Payroll_System.Models.Admin;
 import com.Infotrixs.Payroll_System.Models.Employee;
 import com.Infotrixs.Payroll_System.Models.PaySlip;
 import com.Infotrixs.Payroll_System.Models.Salary;
@@ -103,6 +102,32 @@ public class Converter {
                 .PF(salary.getPF())
                 .insurance(salary.getInsurance())
                 .inHand(salary.getInHand())
+                .build();
+    }
+
+    public static AdminDetails prepareAdminDetails(Admin admin) {
+        return AdminDetails.builder()
+                .adminId(admin.getAdminId())
+                .name(admin.getName())
+                .email(admin.getEmail())
+                .phone(admin.getPhone())
+                .username(admin.getUsername())
+                .build();
+    }
+
+    public static EmployeeDetails prepareEmployeeDetails(Employee employee) {
+        return EmployeeDetails.builder()
+                .empId(employee.getEmpId())
+                .name(employee.getName())
+                .phone(employee.getPhone())
+                .email(employee.getEmail())
+                .username(employee.getUsername())
+                .department(String.valueOf(employee.getDepartment()))
+                .employmentLevel(String.valueOf(employee.getEmploymentLevel()))
+                .designation(employee.getDesignation())
+                .bankAccNo(employee.getBankAccNo())
+                .ifsc(employee.getIfsc())
+                .accountAccess(String.valueOf(employee.getAccess()))
                 .build();
     }
 }

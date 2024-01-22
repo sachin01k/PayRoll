@@ -495,4 +495,17 @@ public class AdminServiceImpl implements AdminService {
 
         return "Employee with ID "+empId+" was deleted from database.";
     }
+
+    @Override
+    public AdminDetails seeAccountDetails(int adminId) {
+        // validate admin
+        Optional<Admin> adminOptional = adminRepository.findById(adminId);
+        if(adminOptional.isEmpty()){
+            throw new AdminNotFoundException("Admin does not exists.");
+        }
+        // update email
+        Admin admin = adminOptional.get();
+        // prepare Admin Details to send to the user
+        return Converter.prepareAdminDetails(admin);
+    }
 }

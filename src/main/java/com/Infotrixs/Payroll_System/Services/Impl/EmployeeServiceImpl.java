@@ -1,14 +1,11 @@
 package com.Infotrixs.Payroll_System.Services.Impl;
 
-import com.Infotrixs.Payroll_System.DTOs.Outgoing.AllPaymentRecords;
-import com.Infotrixs.Payroll_System.DTOs.Outgoing.DueSalaryDetails;
-<<<<<<< HEAD
+import com.Infotrixs.Payroll_System.DTOs.Outgoing.*;
+//<<<<<<< HEAD
 import com.Infotrixs.Payroll_System.Enums.AccountAccess;
 import com.Infotrixs.Payroll_System.Exceptions.AccountAccessRestrictedException;
-=======
-import com.Infotrixs.Payroll_System.DTOs.Outgoing.PaySlipReplica;
-import com.Infotrixs.Payroll_System.DTOs.Outgoing.SalaryReplica;
->>>>>>> f051e62786ad4af457f8aea94481ebaeef220c67
+//=======
+//>>>>>>> f051e62786ad4af457f8aea94481ebaeef220c67
 import com.Infotrixs.Payroll_System.Exceptions.EmployeeNotFoundException;
 import com.Infotrixs.Payroll_System.Exceptions.InvalidOTPException;
 import com.Infotrixs.Payroll_System.Exceptions.NoRecordsFoundException;
@@ -154,5 +151,21 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeOptional.get();
         // prepare a salary replica to send to the user
         return Converter.prepareSalaryReplica(employee);
+    }
+
+    @Override
+    public EmployeeDetails seeAccountDetails(int empId) {
+        // validate employee
+        Optional<Employee> employeeOptional = employeeRepository.findById(empId);
+        if(employeeOptional.isEmpty()){
+            throw new EmployeeNotFoundException("Employee does not exists.");
+        }
+        // validate employee access
+        if(employeeOptional.get().getAccess().equals(AccountAccess.RESTRICTED)){
+            throw new AccountAccessRestrictedException("You account access is restricted.");
+        }
+        // get employee and prepare Employee Details to send to user
+        Employee employee = employeeOptional.get();
+        return Converter.prepareEmployeeDetails(employee);
     }
 }
