@@ -16,10 +16,7 @@ import com.Infotrixs.Payroll_System.Repositories.EmployeeRepository;
 import com.Infotrixs.Payroll_System.Repositories.PaySlipRepository;
 import com.Infotrixs.Payroll_System.Repositories.SalaryRepository;
 import com.Infotrixs.Payroll_System.Services.AdminService;
-import com.Infotrixs.Payroll_System.Utility.Converter;
-import com.Infotrixs.Payroll_System.Utility.KeyGenerator;
-import com.Infotrixs.Payroll_System.Utility.MailComposer;
-import com.Infotrixs.Payroll_System.Utility.SalaryCalculator;
+import com.Infotrixs.Payroll_System.Utility.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -158,6 +155,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public String addNewEmployee(NewEmployeeRequest request) {
+        String password = request.getPassword();
         // Define employee's designation based on department and employment level
         String designation = defineDesignation(request.getDepartment(), request.getEmploymentLevel());
         // create a new Employee
@@ -183,6 +181,9 @@ public class AdminServiceImpl implements AdminService {
         Salary savedSalary = salaryRepository.save(salary);
         // add salary to employee
         savedEmployee.setSalary(savedSalary);
+
+        SimpleMailMessage message = MailComposer.composeMailConsistingNewEmployeeDetails(savedEmployee,password);
+        javaMailSender.send(message);
 
         return "Employee was registered with employee ID "+savedEmployee.getEmpId()+".";
     }
@@ -261,6 +262,9 @@ public class AdminServiceImpl implements AdminService {
         // update employee department
         Employee employee = employeeOptional.get();
         employee.setDepartment(newDepartment);
+        //Updating Designation of employee
+        String newDesignation = defineDesignation(employee.getDepartment(),employee.getEmploymentLevel());
+        employee.setDesignation(newDesignation);
         Employee savedEmployee = employeeRepository.save(employee);
         // change salary structure of the employee based on new department
         float baseMonthlySalary = SalaryCalculator.getBaseMonthlySalaryBasedOnDepartmentAndRole(savedEmployee.getDepartment(), savedEmployee.getEmploymentLevel());
@@ -294,6 +298,9 @@ public class AdminServiceImpl implements AdminService {
         // update employee level
         Employee employee = employeeOptional.get();
         employee.setEmploymentLevel(newLevel);
+        //Updating Designation of employee
+        String newDesignation = defineDesignation(employee.getDepartment(),employee.getEmploymentLevel());
+        employee.setDesignation(newDesignation);
         Employee savedEmployee = employeeRepository.save(employee);
         // change salary structure of the employee based on new department
         float baseMonthlySalary = SalaryCalculator.getBaseMonthlySalaryBasedOnDepartmentAndRole(savedEmployee.getDepartment(), savedEmployee.getEmploymentLevel());

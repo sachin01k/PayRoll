@@ -41,4 +41,24 @@ public class MailComposer {
 
         return message;
     }
+
+    public static SimpleMailMessage composeMailConsistingNewEmployeeDetails(Employee savedEmployee, String password) {
+        String text = "Dear "+savedEmployee.getName()+", \n"
+                +"\n"
+                +"We are happy to have you as our Employee. Following is your Employment Details. \n"
+                +"Employee ID: "+savedEmployee.getEmpId()+"\n"
+                +"Username   : "+savedEmployee.getUsername()+"\n"
+                +"Password   : "+password+"\n"
+                +"Use this username and password to access your account. You can Reset your password according to your convenience.\n"
+                +"\n"
+                +"We are looking forward to achieving great things together.";
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setText(text);
+        message.setSubject("Welcome, " + savedEmployee.getName());
+        message.setFrom("salikzinerr@gmail.com");
+        message.setTo(savedEmployee.getEmail());
+
+        return message;
+    }
 }
