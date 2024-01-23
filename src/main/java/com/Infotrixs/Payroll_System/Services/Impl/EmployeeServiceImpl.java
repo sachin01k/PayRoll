@@ -53,9 +53,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeOptional.get();
         employee.setPasswordResetReqId(uniqueId);
         employeeRepository.save(employee);
-        // send this unique id at Admin email
-        SimpleMailMessage message = MailComposer.composeMailConsistingPasswordResetIdForEmployee(employee);
-        javaMailSender.send(message);
+        try{
+            // send this unique id at Admin email
+            SimpleMailMessage message = MailComposer.composeMailConsistingPasswordResetIdForEmployee(employee);
+            javaMailSender.send(message);
+        } catch (Exception e){
+            throw new RuntimeException("Some error occurred while generating OTP. Try again.");
+        }
 
         return "An OTP was sent to your email. Use the OTP to reset your password";
     }

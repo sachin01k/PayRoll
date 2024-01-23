@@ -45,11 +45,13 @@ public class MailComposer {
     public static SimpleMailMessage composeMailConsistingNewEmployeeDetails(Employee savedEmployee, String password) {
         String text = "Dear "+savedEmployee.getName()+", \n"
                 +"\n"
-                +"We are happy to have you as our Employee. Following is your Employment Details. \n"
-                +"Employee ID: "+savedEmployee.getEmpId()+"\n"
-                +"Username   : "+savedEmployee.getUsername()+"\n"
-                +"Password   : "+password+"\n"
-                +"Use this username and password to access your account. You can Reset your password according to your convenience.\n"
+                +"We are happy to have you onboard. Following is your Employee Details. \n"
+                +"\n"
+                +"Employee ID       :   "+savedEmployee.getEmpId()+"\n"
+                +"Username          :   "+savedEmployee.getUsername()+"\n"
+                +"Password          :   "+password+"\n"
+                +"\n"
+                +"Use this username and password to access your account. You can reset your password as per your convenience.\n"
                 +"\n"
                 +"We are looking forward to achieving great things together.";
 

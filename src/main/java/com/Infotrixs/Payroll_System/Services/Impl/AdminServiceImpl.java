@@ -123,9 +123,13 @@ public class AdminServiceImpl implements AdminService {
         Admin admin = adminOptional.get();
         admin.setPasswordResetReqId(uniqueId);
         adminRepository.save(admin);
-        // send this unique id at Admin email
-        SimpleMailMessage message = MailComposer.composeMailConsistingPasswordResetIdForAdmin(admin);
-        javaMailSender.send(message);
+        try{
+            // send this unique id at Admin email
+            SimpleMailMessage message = MailComposer.composeMailConsistingPasswordResetIdForAdmin(admin);
+            javaMailSender.send(message);
+        } catch (Exception e){
+            throw new RuntimeException("Some error occurred while generating OTP. Try again.");
+        }
 
         return "An OTP was sent to your email. Use the OTP to reset your password";
     }
@@ -181,9 +185,14 @@ public class AdminServiceImpl implements AdminService {
         Salary savedSalary = salaryRepository.save(salary);
         // add salary to employee
         savedEmployee.setSalary(savedSalary);
+        try{
+            // compose mail to send employee with employee details
+            SimpleMailMessage message = MailComposer.composeMailConsistingNewEmployeeDetails(savedEmployee, password);
+            javaMailSender.send(message);
+        } catch (Exception e){
+            return "Employee was registered with employee ID "+savedEmployee.getEmpId()+".";
+        }
 
-        SimpleMailMessage message = MailComposer.composeMailConsistingNewEmployeeDetails(savedEmployee,password);
-        javaMailSender.send(message);
 
         return "Employee was registered with employee ID "+savedEmployee.getEmpId()+".";
     }
