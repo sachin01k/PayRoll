@@ -20,6 +20,16 @@ public class EmployeeLoginServiceImpl implements EmployeeLoginService {
         this.employeeRepository = employeeRepository;
     }
 
+    /**
+     * This function takes an employee's username and password as authentication credentials,
+     * matches it with the username and password corresponding to that employee and returns
+     * name and employee ID of that employee.
+     * @return DTO EmployeeLoginDetails which has two fields; Employee's name and ID.
+     *
+     * The function takes employee's username and password, Spring security validates it. If the
+     * credentials are valid, the function extracts Employee using the username from the DB. Then
+     * it copies employee's name and ID into DTO EmployeeLoginDetails and send to user.
+     */
     @Override
     public EmployeeLoginDetails employeeLogin() {
         // extract employee username from the authentication details

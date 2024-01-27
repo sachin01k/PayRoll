@@ -8,7 +8,13 @@ import com.Infotrixs.Payroll_System.Models.PaySlip;
 import com.Infotrixs.Payroll_System.Models.Salary;
 
 public class Converter {
-
+    /**
+     * This function creates and object of DTO DueSalaryDetails by extracting relevant details from
+     * Employee and Salary model classes.
+     * @param employee
+     * @param salary
+     * @return DTO DueSalaryDetails which has fields related to Employee and Salary model classes.
+     */
     public static DueSalaryDetails prepareDueSalaryDetails(Employee employee, Salary salary) {
         float totalEarning = salary.getInHand() + employee.getPrevDue();
         float deductionForUnpaidLeaves = deductionForUnpaidLeaves(employee.getUnpaidLeaves(), salary.getBase());
@@ -34,6 +40,15 @@ public class Converter {
                 .build();
     }
 
+    /**
+     * This function calculates and returns the salary deduction (amount) made by employer against the
+     * unpaid leaves taken by the employee.
+     * @param unpaidLeaves
+     * @param baseSalary
+     * @return a float value indicating the total deduction amount.
+     *
+     * Read the one-liner comments in the function to see the rules of deduction.
+     */
     private static float deductionForUnpaidLeaves(int unpaidLeaves, float baseSalary) {
         // divide base salary with number of days in a month
         float perDaySalary = baseSalary/30;
@@ -41,6 +56,12 @@ public class Converter {
         return perDaySalary * unpaidLeaves;
     }
 
+    /**
+     * This function creates an object of PaySlip Model class by extracting the data from Employee
+     * and Salary model classes.
+     * @param employee
+     * @return Model PaySlip which has fields related to Employee and Salary model classes.
+     */
     public static PaySlip preparePaySlip(Employee employee) {
         // get employee salary
         Salary salary = employee.getSalary();
@@ -67,6 +88,11 @@ public class Converter {
                 .build();
     }
 
+    /**
+     * This function creates an object of DTO PaySlipReplica by copying the fields from PaySlip model class.
+     * @param paySlip
+     * @return DTO PaySlipReplica. Refer PaySlip in models and PaySlipReplica in DTOs to see the fields.
+     */
     public static PaySlipReplica preparePaySlipReplica(PaySlip paySlip) {
         return PaySlipReplica.builder()
                 .paySlipId(paySlip.getPaySlipId())
@@ -89,6 +115,11 @@ public class Converter {
                 .build();
     }
 
+    /**
+     * This function creates an object of DTO SalaryReplica by extracting the values from an employee's Salary (Salary model class).
+     * @param employee
+     * @return DTO SalaryReplica which has fields similar to Salary model class. Refer to these classes to see the fields.
+     */
     public static SalaryReplica prepareSalaryReplica(Employee employee) {
         // get employee's salary
         Salary salary = employee.getSalary();
@@ -105,6 +136,11 @@ public class Converter {
                 .build();
     }
 
+    /**
+     * This function creates an object of DTO AdminDetails by copying the fields from Admin model class.
+     * @param admin
+     * @return DTO AdminDetails which has two fields similar to Admin model class.
+     */
     public static AdminDetails prepareAdminDetails(Admin admin) {
         return AdminDetails.builder()
                 .adminId(admin.getAdminId())
@@ -115,6 +151,11 @@ public class Converter {
                 .build();
     }
 
+    /**
+     * This function creates an object of DTO EmployeeDetails by copying the fields from Employee model class.
+     * @param employee
+     * @return DTO EmployeeDetails which has fields similar to Employee model class.
+     */
     public static EmployeeDetails prepareEmployeeDetails(Employee employee) {
         return EmployeeDetails.builder()
                 .empId(employee.getEmpId())
