@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #C6EDEE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Infotrixs.Payroll_System.PayrollUI.AdminDashboard.ViewPaymentRecordsController">
+
+    <children>
+        <!-- Search Box -->
+        <HBox alignment="CENTER" layoutX="290.0" layoutY="50.0" spacing="10.0" />
+      <Label layoutX="426.0" layoutY="14.0" text="Payment Records" textAlignment="CENTER" textFill="#5447eb" wrapText="true">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+
+        <!-- Main VBox -->
+        <VBox fx:id="mainVBox" alignment="CENTER" fillWidth="false" layoutX="9.0" layoutY="116.0" prefHeight="550.0" prefWidth="1063.0" spacing="10.0" style="-fx-background-color: white; -fx-opacity: .9; -fx-background-radius: 50; -fx-border-color: #6C60FC; -fx-border-radius: 50;">
+
+
+
+            <!-- Table View -->
+            <TableView fx:id="salaryTableView" prefHeight="510.0" prefWidth="1018.0" style="-fx-background-color: #C6EDEE;">
+                <columns>
+                    <!-- Define columns -->
+                    <TableColumn fx:id="paySlipId" text="Pay Slip ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="paySlipId" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="employeeId" text="Employee ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="employeeId" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="employeeName" text="Employee Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="employeeName" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="department" text="Department">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="department" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="employmentLevelColumn" text="Employment Level">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="employmentLevel" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="designationColumn" text="Designation">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="designation" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="baseColumn" text="Base">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="base" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="houseRestAllowColumn" text="House Rent Allowance">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="houseRestAllow" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="convenienceAllowColumn" text="Convenience Allowance">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="convenienceAllow" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="pfColumn" text="PF">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="pf" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="insuranceColumn" text="Insurance">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="insurance" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="inHandColumn" text="In Hand">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="inHand" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="prevDueColumn" text="Previous Due">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="prevDue" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="deductionForUnpaidLeavesColumn" text="Deduction for Unpaid Leaves">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="deductionForUnpaidLeaves" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="unpaidLeavesColumn" text="Unpaid Leaves">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="unpaidLeaves" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="paymentStatusColumn" text="Payment Status">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="paymentStatus" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+
+
+        </VBox>
+        <TextField fx:id="searchTextField" layoutX="389.0" layoutY="72.0" promptText="Enter Employee ID" style="-fx-background-color: white; -fx-background-radius: 5; -fx-opacity: .8; -fx-border-color: #6C60FC; -fx-background-radius: 10; -fx-border-radius: 10;" />
+        <Button fx:id="searchButton" layoutX="547.0" layoutY="73.0" onAction="#handleSearchButtonAction" style="-fx-background-radius: 10; -fx-background-color: #6C60FC;" text="Search" textFill="WHITE" />
+        <Button fx:id="resetButton" layoutX="610.0" layoutY="73.0" onAction="#handleResetButtonAction" style="-fx-background-radius: 10; -fx-background-color: #6C60FC;" text="Reset" textFill="WHITE" />
+      <Label fx:id="errorLabel" layoutX="667.0" layoutY="77.0" text="Label" textFill="RED" visible="false" wrapText="true">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

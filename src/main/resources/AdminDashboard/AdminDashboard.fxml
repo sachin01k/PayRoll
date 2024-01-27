@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Infotrixs.Payroll_System.PayrollUI.AdminDashboard.AdminDashboardController">
+    <children>
+        <AnchorPane fx:id="content" layoutX="0.0" layoutY="40.0" prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #CFFCFB;">
+            <fx:include fx:id="Profile" source="Profile.fxml" visible="true" />
+            <fx:include fx:id="ViewAndEditAdminDetails" source="UpdateAdmin.fxml" visible="false" />
+            <fx:include fx:id="RegisterNewEmployee" source="RegisterNewEmployee.fxml" visible="false" />
+            <fx:include fx:id="UpdateEmployeeDetails" source="UpdateEmployeeDetails.fxml" visible="false" />
+            <fx:include fx:id="RecordUnpaidDues" source="RecordUnpaidDues.fxml" visible="false" />
+            <fx:include fx:id="RecordUnpaidLeaves" source="RecordUnpaidLeaves.fxml" visible="false" />
+            <fx:include fx:id="ViewCurrentDueSalaries" source="ViewCurrentDueSalaries.fxml" visible="false" />
+            <fx:include fx:id="PaymentSlip" source="PaymentSlip.fxml" visible="false" />
+            <fx:include fx:id="ViewPaymentRecords" source="ViewPaymentRecords.fxml" visible="false" />
+            <fx:include fx:id="DeleteEmployee" source="DeleteEmployee.fxml" visible="false" />
+
+        </AnchorPane>
+        <ToolBar prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: #5447EB;">
+            <items>
+                <Button fx:id="toggleNavigation" onAction="#toggleNavigation" style="-fx-background-color: #5447EB;">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="29.0" preserveRatio="true">
+                            <image>
+                                <Image url="@images/nav.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <!-- Use HBox to center the label within the Tab -->
+                <HBox alignment="CENTER" prefHeight="40.0" prefWidth="385.0" />
+                <Label prefHeight="35.0" prefWidth="192.0" text="Payroll Management" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+            </items>
+        </ToolBar>
+
+        <Pane fx:id="navigationPane" layoutX="-250.0" layoutY="49.0" prefHeight="670.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-250.0" AnchorPane.topAnchor="50.0">
+
+            <Button fx:id="handleProfile" layoutY="5.0" onAction="#handleProfile" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="View Profile" textAlignment="LEFT" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleEditAdminDetails" layoutY="45.0" onAction="#handleEditAdminDetails" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="Update Admin" textAlignment="LEFT" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleRegisterNewEmployee" layoutY="85.0" onAction="#handleRegisterNewEmployee" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="Add Employee" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleUpdateEmployeeDetails" layoutY="125.0" onAction="#handleUpdateEmployeeDetails" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="Update Employee Details" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleRecordDues" layoutY="165.0" onAction="#handleRecordDues" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="Previous Dues" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+            <Button fx:id="handleRecordUnpaidLeaves" layoutY="205.0" onAction="#handleRecordUnpaidLeaves" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="Record Unpaid Leave" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleViewCurrentDueSalaries" layoutY="245.0" onAction="#handleViewCurrentDueSalaries" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="View Due Salaries" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handlePaymentSlip" layoutY="285.0" onAction="#handlePaymentSlip" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="Pay And Generate Slip" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleShowStructure" layoutY="325.0" onAction="#handleShowStructure" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="Salary Structure" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleViewPaymentRecords" layoutY="365.0" onAction="#handleViewPaymentRecords" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="View Payment Records" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleDeleteEmployee" layoutY="405.0" onAction="#handleDeleteEmployee" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="Delete Employee" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleLogout" layoutY="630.0" onAction="#handleLogout" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #5447EB;" text="Logout" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+
+        </Pane>
+
+
+
+    </children>
+</AnchorPane>

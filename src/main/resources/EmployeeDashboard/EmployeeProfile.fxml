@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #C6EDEE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Infotrixs.Payroll_System.PayrollUI.EmployeeDashboard.EmployeeProfileController">
+
+    <ImageView fitHeight="140.0" fitWidth="140.0" layoutX="470.0" layoutY="19.0">
+        <!-- Set the path to your profile image -->
+        <image>
+            <Image url="@images/EmpProfile.png" />
+        </image>
+    </ImageView>
+    <Label contentDisplay="CENTER" layoutX="428.0" layoutY="159.0" prefHeight="54.0" style="-fx-text-fill: #5447EB; -fx-opacity: 1;" text="Employee Profile" textAlignment="CENTER" wrapText="true">
+        <font>
+            <Font name="Segoe UI Bold" size="28.0" />
+        </font>
+    </Label>
+    <VBox layoutX="235.0" layoutY="213.0" prefHeight="450.0" prefWidth="611.0" style="-fx-background-color: #ffffff; -fx-opacity: 1; -fx-background-radius: 50; -fx-border-color: #6C60FC; -fx-border-radius: 50;">
+        <children>
+            <GridPane alignment="CENTER" hgap="10" prefHeight="416.0" prefWidth="600.0" vgap="10">
+
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="290.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="217.0" minWidth="0.0" prefWidth="22.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.0" minWidth="10.0" prefWidth="317.0" />
+                </columnConstraints>
+
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+
+                <Label prefHeight="19.0" prefWidth="109.0" text="Employee ID" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label fx:id="employeeIdLabel" text="Sample Admin ID" GridPane.columnIndex="2" GridPane.rowIndex="0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+
+                <Label text="Name" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label fx:id="nameLabel" text="Sample Name" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+
+                <Label text="Email" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Label fx:id="emailLabel" text="sample@email.com" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+
+                <Label text="Phone" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Label fx:id="phoneLabel" text="123-456-7890" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+
+                <Label text="Username" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                <Label fx:id="usernameLabel" text="sampleUsername" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+
+                <Label text="Department" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                <Label fx:id="departmentLabel" text="123-456-7890" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+
+                <Label text="Employment Level" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                <Label fx:id="EmploymentLevelLabel" text="123-456-7890" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+
+                <Label text="Designation" GridPane.columnIndex="0" GridPane.rowIndex="7">
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+                <Label fx:id="DesignationLabel" text="123-456-7890" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+
+                <Label text="Bank Account Number" GridPane.columnIndex="0" GridPane.rowIndex="8">
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+
+                <Label fx:id="bankAccountNumberLabel" text="123-456-7890" GridPane.columnIndex="2" GridPane.rowIndex="8">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+
+                <Label text="IFSC" GridPane.columnIndex="0" GridPane.rowIndex="9">
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+
+                <Label fx:id="ifscLabel" text="123-456-7890" GridPane.columnIndex="2" GridPane.rowIndex="9">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+
+                <Label text="Account Access" GridPane.columnIndex="0" GridPane.rowIndex="10">
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+
+                <Label fx:id="accountAccessLabel" text="123-456-7890" GridPane.columnIndex="2" GridPane.rowIndex="10">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin>
+
+
+            </GridPane>
+        </children>
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Infotrixs.Payroll_System.PayrollUI.EmployeeDashboard.EmployeeDashboardController">
+    <children>
+        <AnchorPane fx:id="content" layoutX="0.0" layoutY="40.0" prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #CFFCFB;">
+            <fx:include fx:id="EmployeeProfile" source="EmployeeProfile.fxml" visible="true" />
+            <fx:include fx:id="SalaryStructure" source="SalaryStructureEmp.fxml" visible="false" />
+            <fx:include fx:id="ViewCurrentDuesSalary" source="ViewCurrentDueSalaryEmp.fxml" visible="false" />
+            <fx:include fx:id="ViewPaymentRecords" source="ViewPaymentRecordsEmp.fxml" visible="false" />
+
+
+        </AnchorPane>
+        <ToolBar maxHeight="40.0" prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: #5447EB;">
+            <items>
+                <Button fx:id="toggleNavigation" onAction="#toggleNavigation" style="-fx-background-color: #5447EB;">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="29.0" preserveRatio="true">
+                            <image>
+                                <Image url="@images/nav.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Label alignment="CENTER" prefHeight="30.0" prefWidth="970.0" text="Payroll Management" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+            </items>
+        </ToolBar>
+
+        <Pane fx:id="navigationPane" layoutX="-250.0" layoutY="49.0" prefHeight="670.0" prefWidth="250.0" style="-fx-background-color: #6C60FC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-250.0" AnchorPane.topAnchor="50.0">
+
+            <Button fx:id="handleProfile" layoutY="5.0" onAction="#handleProfile" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #6C60FC;" text="View Profile" textAlignment="LEFT" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleShowStructure" layoutY="45.0" onAction="#handleShowStructure" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #6C60FC;" text="Salary Structure" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleViewCurrentDueSalaries" layoutY="85.0" onAction="#handleViewCurrentDueSalaries" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #6C60FC;" text="Due Salary Structure" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleViewPaymentRecords" layoutY="125.0" onAction="#handleViewPaymentRecords" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #6C60FC;" text="Payment Records" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+            <Button fx:id="handleLogout" layoutY="630.0" onAction="#handleLogout" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #6C60FC;" text="Logout" textFill="WHITE">
+                <font>
+                    <Font name="System" size="15.0" />
+                </font>
+            </Button>
+
+        </Pane>
+    </children>
+</AnchorPane>

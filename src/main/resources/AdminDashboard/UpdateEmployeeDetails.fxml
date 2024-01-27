@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #C6EDEE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Infotrixs.Payroll_System.PayrollUI.AdminDashboard.UpdateEmployeeDetailsController">
+
+    <children>
+        <!-- Main VBox -->
+        <VBox fx:id="mainVBox" alignment="CENTER" fillWidth="false" layoutX="340.0" layoutY="146.0" prefHeight="388.0" prefWidth="400.0" spacing="10.0" style="-fx-background-color: white; -fx-opacity: .9; -fx-background-radius: 50; -fx-border-color: #6C60FC; -fx-border-radius: 50;">
+            <Label contentDisplay="CENTER" prefHeight="54.0" style="-fx-text-fill: #5447EB; -fx-opacity: 1;" text="Update Employee Details" wrapText="true">
+                <font>
+                    <Font name="Segoe UI Bold" size="28.0" />
+                </font>
+                <padding>
+                    <Insets bottom="20.0" />
+                </padding></Label>
+            <!-- Existing code -->
+            <TextField fx:id="EmployeeIdTextField" promptText="Employee ID" style="-fx-background-color: CFFCFB;" />
+            <!-- Add ComboBox for functions -->
+            <ComboBox fx:id="functionComboBox" promptText="Select Function" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Update Department" />
+                        <String fx:value="Update Employment Level" />
+                        <String fx:value="Change Employee Access" />
+                        <!-- Add more options as needed -->
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Forms for different functions -->
+            <VBox fx:id="updateDepartmentForm" managed="false" spacing="5.0" visible="false">
+                <!-- Add fields and components for Update Department -->
+                <ComboBox fx:id="newDepartmentField" promptText="Select New Department" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="SALES" />
+                            <String fx:value="MARKETING" />
+                            <String fx:value="ENGINEERING" />
+                            <String fx:value="FINANCE" />
+                            <String fx:value="HR" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <!-- Add more fields as needed -->
+            </VBox>
+
+            <VBox fx:id="updateEmploymentLevelForm" managed="false" spacing="5.0" visible="false">
+                <!-- Add fields and components for Update Employment Level -->
+                <ComboBox fx:id="newEmploymentLevelComboBox" promptText="Select New Employment Level" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="TRAINEE" />
+                            <String fx:value="ASSOCIATE" />
+                            <String fx:value="SENIOR" />
+                            <String fx:value="MANAGER" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>                <!-- Add more fields as needed -->
+            </VBox>
+
+            <VBox fx:id="changeEmployeeAccessForm" managed="false" spacing="5.0" visible="false">
+                <!-- Add fields and components for Change Employee Access -->
+                <ComboBox fx:id="accessComboBox" promptText="Select Access" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="GRANTED" />
+                            <String fx:value="DENIED" />
+                            <!-- Add more options as needed -->
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <!-- Add more fields as needed -->
+            </VBox>
+         <Label fx:id="errorLabel" text="Label" textFill="RED" visible="false" wrapText="true">
+            <font>
+               <Font name="System Italic" size="12.0" />
+            </font>
+         </Label>
+
+            <Button fx:id="performFunctionButton" onAction="#handlePerformFunctionButton" style="-fx-background-radius: 10; -fx-background-color: #6C60FC;" text="Perform Function" textFill="WHITE">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Button>
+
+        </VBox>
+    </children>
+</AnchorPane>

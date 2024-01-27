@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #C6EDEE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Infotrixs.Payroll_System.PayrollUI.AdminDashboard.SalaryStructureController">
+    <Label contentDisplay="CENTER" layoutX="430.0" layoutY="14.0" prefHeight="54.0" prefWidth="221.0" style="-fx-text-fill: #5447EB; -fx-opacity: 1;" text="Salary Structure" wrapText="true">
+        <font>
+            <Font name="Segoe UI Bold" size="28.0" />
+        </font>
+        <padding>
+            <Insets bottom="20.0" />
+        </padding></Label>
+    <TextField fx:id="employeeId" layoutX="366.0" layoutY="180.0" promptText="Enter Employee ID" style="-fx-background-color: white; -fx-background-radius: 5; -fx-opacity: .8; -fx-border-color: #6C60FC; -fx-background-radius: 10; -fx-border-radius: 10;" />
+    <Button fx:id="ShowStructure" layoutX="366.0" layoutY="220.0" onAction="#handleShowStructure" style="-fx-background-radius: 10; -fx-background-color: #6C60FC;" text="Show" textFill="WHITE">
+        <font>
+            <Font size="14.0" />
+        </font></Button>
+    <GridPane layoutX="365.0" layoutY="265.0" prefHeight="370.0" prefWidth="350.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;">
+
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="169.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.0" minWidth="10.0" prefWidth="179.0" />
+        </columnConstraints>
+
+        <rowConstraints>
+            <!-- Add or modify row constraints as needed -->
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+            <!-- Add more row constraints as needed -->
+        </rowConstraints>
+
+        <Label text="Employee Name:">
+            <padding>
+                <Insets left="10.0" />
+            </padding>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="employeeNameLabel" GridPane.columnIndex="1" />
+
+        <Label text="Salary ID:" GridPane.rowIndex="1">
+            <padding>
+                <Insets left="10.0" />
+            </padding>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="salaryIdLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Base:" GridPane.rowIndex="2">
+            <GridPane.margin>
+                <Insets left="10.0" />
+            </GridPane.margin>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="baseLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="House Rent Allowance:" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets left="10.0" />
+            </GridPane.margin>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="houseRestAllowLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Convenience Allowance:" GridPane.rowIndex="4">
+            <GridPane.margin>
+                <Insets left="10.0" />
+            </GridPane.margin>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="convenienceAllowLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label text="Insurance:" GridPane.rowIndex="6">
+            <GridPane.margin>
+                <Insets left="10.0" />
+            </GridPane.margin>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="insuranceLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+        <Label text="In Hand:" GridPane.rowIndex="7">
+            <GridPane.margin>
+                <Insets left="10.0" />
+            </GridPane.margin>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="inHandLabel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+        <Label text="Provident Fund (PF):" GridPane.rowIndex="5">
+            <GridPane.margin>
+                <Insets left="10.0" />
+            </GridPane.margin>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="pfLabel" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+    </GridPane>
+   <Label fx:id="errorLabel" layoutX="526.0" layoutY="185.0" text="Label" textFill="RED" visible="false" wrapText="true">
+      <font>
+         <Font name="System Italic" size="12.0" />
+      </font>
+   </Label>
+
+
+
+</AnchorPane>

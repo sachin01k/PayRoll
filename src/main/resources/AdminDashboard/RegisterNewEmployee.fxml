@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #C6EDEE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Infotrixs.Payroll_System.PayrollUI.AdminDashboard.RegisterNewEmployeeController">
+
+    <children>
+        <VBox fx:id="mainVBox" alignment="CENTER" fillWidth="false" layoutX="340.0" layoutY="58.0" prefHeight="600.0" prefWidth="400.0" spacing="10.0" style="-fx-background-color: white; -fx-opacity: .9; -fx-background-radius: 70; -fx-border-color: #6C60FC; -fx-border-radius: 70;">
+            <Label contentDisplay="CENTER" prefHeight="54.0" style="-fx-text-fill: #5447EB; -fx-opacity: 1;" text="Register New Employee" wrapText="true">
+                <font>
+                    <Font name="Segoe UI Bold" size="28.0" />
+                </font>
+                <padding>
+                    <Insets bottom="20.0" />
+                </padding>
+            </Label>
+
+            <TextField fx:id="nameField" focusTraversable="false" prefHeight="30.0" prefWidth="300.0" promptText="Name" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;" />
+            <TextField fx:id="emailField" focusTraversable="false" prefHeight="30.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;" />
+            <TextField fx:id="phoneField" focusTraversable="false" prefHeight="30.0" prefWidth="300.0" promptText="Phone" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;" />
+            <TextField fx:id="usernameField" focusTraversable="false" prefHeight="30.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;" />
+            <PasswordField fx:id="passwordField" focusTraversable="false" prefHeight="30.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;" />
+            <ComboBox fx:id="departmentComboBox" prefHeight="30.0" prefWidth="300.0" promptText="Select Department" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="SALES" />
+                        <String fx:value="MARKETING" />
+                        <String fx:value="ENGINEERING" />
+                        <String fx:value="FINANCE" />
+                        <String fx:value="HR" />
+                        <!-- Add more department options as needed -->
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <ComboBox fx:id="employmentLevelComboBox" prefHeight="30.0" prefWidth="300.0" promptText="Select Employment Level" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="TRAINEE" />
+                        <String fx:value="ASSOCIATE" />
+                        <String fx:value="SENIOR" />
+                        <String fx:value="MANAGER" />
+                        <!-- Add more employment level options as needed -->
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            <TextField fx:id="bankAccNoField" focusTraversable="false" prefHeight="30.0" prefWidth="300.0" promptText="Bank Account No." style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;" />
+            <TextField fx:id="ifscField" focusTraversable="false" prefHeight="30.0" prefWidth="300.0" promptText="IFSC" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;" />
+         <Label fx:id="errorLabel" text="Label" textFill="RED" visible="false" wrapText="true">
+            <font>
+               <Font name="System Italic" size="12.0" />
+            </font>
+         </Label>
+
+            <Button onAction="#registerEmployee" style="-fx-background-radius: 10; -fx-background-color: #6C60FC;" text="Register" textFill="WHITE">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Button>
+        </VBox>
+    </children>
+
+</AnchorPane>

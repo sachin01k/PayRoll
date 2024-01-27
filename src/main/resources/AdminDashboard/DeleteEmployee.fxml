@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="680.0" prefWidth="1080.0" style="-fx-background-color: #C6EDEE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Infotrixs.Payroll_System.PayrollUI.AdminDashboard.DeleteEmployeeController">
+
+    <children>
+    <!-- Main VBox -->
+    <VBox fx:id="mainVBox" alignment="CENTER" fillWidth="false" layoutX="340.0" layoutY="146.0" prefHeight="388.0" prefWidth="400.0" spacing="10.0" style="-fx-background-color: white; -fx-opacity: .9; -fx-background-radius: 50; -fx-border-color: #5447EB; -fx-border-radius: 50;">
+
+    <Label prefHeight="54.0" prefWidth="222.0" style="-fx-text-fill: #5447EB; -fx-opacity: 1;" text="Delete Employee" textAlignment="CENTER" wrapText="true">
+        <font>
+            <Font name="Segoe UI Bold" size="28.0" />
+        </font>
+            <VBox.margin>
+               <Insets bottom="30.0" />
+            </VBox.margin>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets></Label>
+        <TextField fx:id="employeeIdTextField" layoutX="362.0" layoutY="289.0" prefHeight="30.0" prefWidth="250.0" promptText="Enter Employee ID" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5;" />
+         <Label fx:id="errorLabel" prefHeight="17.0" text="Label" textFill="RED" visible="false" wrapText="true">
+            <font>
+               <Font name="System Italic" size="12.0" />
+            </font>
+         </Label>
+        <Button alignment="CENTER" layoutX="430.0" layoutY="356.0" onAction="#deleteEmployee" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #6C60FC;" text="Delete Employee" textFill="white">
+            <font>
+                <Font size="14.0" />
+            </font>
+            <VBox.margin>
+               <Insets bottom="60.0" top="10.0" />
+            </VBox.margin></Button>
+
+
+
+
+
+    </VBox>
+    </children>
+</AnchorPane>

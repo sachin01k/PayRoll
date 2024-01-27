@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Infotrixs.Payroll_System.PayrollUI.LoginController">
+
+    <children>
+        <!-- Background Image -->
+        <ImageView fitHeight="720.0" fitWidth="1080.0" style="-fx-opacity: .7;">
+            <image>
+                <Image url="@background.jpg" />
+            </image>
+        </ImageView>
+        <VBox layoutX="365.0" layoutY="200.0" prefHeight="320.0" prefWidth="350.0" style="-fx-background-color: #ffffff; -fx-opacity: .9; -fx-background-radius: 50; -fx-border-color: #6C60FC; -fx-border-radius: 50;" />
+
+        <!-- Your existing content -->
+        <VBox fx:id="mainVBox" alignment="CENTER" fillWidth="false" layoutX="365.0" layoutY="200.0" prefHeight="320.0" prefWidth="350.0" spacing="4.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="365.0" AnchorPane.rightAnchor="365.0" AnchorPane.topAnchor="200.0">
+            <Label contentDisplay="CENTER" prefHeight="49.0" prefWidth="263.0" style="-fx-text-fill: #5447EB; -fx-opacity: 1;" text="Payroll Mangement">
+                <font>
+                    <Font name="Segoe UI Bold" size="28.0" />
+                </font>
+                <padding>
+                    <Insets bottom="20.0" />
+                </padding></Label>
+
+            <TextField fx:id="usernameField" focusTraversable="false" onMouseClicked="#handleUsernameFieldClick" prefHeight="30.0" prefWidth="192.0" promptText="Username" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5; -fx-opacity: .8;" />
+            <PasswordField fx:id="passwordField" focusTraversable="false" onMouseClicked="#handlePasswordFieldClick" prefHeight="30.0" prefWidth="192.0" promptText="Password" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5; -fx-opacity: .8;" />
+
+            <ComboBox fx:id="roleComboBox" prefWidth="192.0" promptText="Select Role" style="-fx-background-color: #CFFCFB; -fx-background-radius: 5; -fx-opacity: .8;">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Admin" />
+                        <String fx:value="Employee" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            <Label fx:id="errorLabel" prefHeight="17.0" textAlignment="CENTER" textFill="RED" wrapText="true" />
+
+
+            <Button onAction="#loginButtonClicked" style="-fx-background-radius: 10; -fx-background-color: #6C60FC; -fx-effect: dropshadow(three-pass-box, derive(#CFFCFB, 70%), 10, 0, 0, 0);" text="Login" textFill="WHITE">
+                <font>
+                    <Font size="14.0" />
+                </font></Button>
+            <Button onAction="#resetPasswordClicked" style="-fx-background-radius: 10; -fx-background-color: #6C60FC; -fx-effect: dropshadow(three-pass-box, derive(#CFFCFB, 70%), 10, 0, 0, 0);" text="Reset Password" textFill="WHITE">
+                <font>
+                    <Font size="14.0" />
+                </font></Button>
+            <Button onAction="#RegisterNewAdminClicked" style="-fx-background-radius: 10; -fx-background-color: #6C60FC; -fx-effect: dropshadow(three-pass-box, derive(#CFFCFB, 70%), 10, 0, 0, 0);" text="Register Admin" textFill="WHITE">
+                <font>
+                    <Font size="14.0" />
+                </font></Button>
+        </VBox>
+    </children>
+
+</AnchorPane>
