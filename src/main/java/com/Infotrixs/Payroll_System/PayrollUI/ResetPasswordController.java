@@ -42,6 +42,9 @@ public class ResetPasswordController {
 
     private final String BASE_URL = "http://localhost:8080/";
 
+    @FXML
+    private HBox P;
+
     // Add a Timeline for controlling the visibility of the errorLabel
     private Timeline errorLabelTimeline;
 
@@ -93,6 +96,7 @@ public class ResetPasswordController {
                 otpField.setVisible(true);
                 newPasswordField.setVisible(true);
                 resetPassword.setVisible(true);
+                P.setVisible(true);
                 displayError(null); // Clear error label
             } else {
                 // API call failed, show error message
