@@ -441,7 +441,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     /**
-     * In this records can be viewed of employee Unpaid leaves.
+     * In this function records can be viewed of an employee's Unpaid leaves.
      * @param empId
      * @param leaves
      * @return returns a String.
