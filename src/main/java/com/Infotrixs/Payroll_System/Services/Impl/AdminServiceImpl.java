@@ -47,6 +47,14 @@ public class AdminServiceImpl implements AdminService {
         this.javaMailSender = javaMailSender;
     }
 
+    /**
+     *  A new Admin Account is added by using Authorized Token. Authorization token is verified before
+     *  adding the new employee to system, if token verification fails then InvalidAdminAuthTokenException
+     *  is thrown. Admin class object is used to store the admin details and adminRepository object is used
+     *  to store the admin details.
+     * @param request
+     * @return Admin is saved in Database successfully String is Returned "Admin Registered".
+     */
     @Override
     public String addNewAdmin(NewAdminRequest request) {
         // validate if request has a valid authorization token
@@ -66,6 +74,15 @@ public class AdminServiceImpl implements AdminService {
         return "Admin registered.";
     }
 
+    /**
+     * AdminController will call this method and will send parameters of admin
+     * whose email is to be updated. Firstly admin id is searched so to update email.
+     * In case if no such admin is found then AdminNotFoundException is thrown.
+     * And if admin is found the admin email is updated and saved in DataBase using Dao.
+     * @param adminId
+     * @param newEmail
+     * @return String is returned if Email is Successfully updated "Email was updated".
+     */
     @Override
     public String updateEmail(int adminId, String newEmail) {
         // validate admin
@@ -81,6 +98,15 @@ public class AdminServiceImpl implements AdminService {
         return "Email was updated.";
     }
 
+    /**
+     * Admin Phone Number is updated in below method
+     * Firstly admin id is verified in database to update email.
+     * In case if no such admin is found then AdminNotFoundException is thrown.
+     * And if admin is found the admin phone number is updated and saved in DataBase using Dao.     *
+     * @param adminId
+     * @param newPhone
+     * @return String is returned if phone number is Successfully updated "Phone number was updated".
+     */
     @Override
     public String updatePhone(int adminId, String newPhone) {
         // validate admin
@@ -96,6 +122,13 @@ public class AdminServiceImpl implements AdminService {
         return "Phone number was updated.";
     }
 
+    /**
+     * This Function update usernmae of admin and if admin id is not found in database
+     * AdminNotFoundException is thrown. If admin id is verified then uaername is updated.
+     * @param adminId
+     * @param newUsername
+     * @return String is returned if username is updated "Username is changed."
+     */
     @Override
     public String updateUsername(int adminId, String newUsername) {
         // validate admin
@@ -111,6 +144,12 @@ public class AdminServiceImpl implements AdminService {
         return "Username was changed.";
     }
 
+    /**
+     * In this function admin request to reset password and otp is sent to the verified email id.
+     * The otp is temporarily stored in database.
+     * @param adminId
+     * @return String is Returned if admin is verified in database "An OTP was sent to your email. Use the OTP to reset your password."
+     */
     @Override
     public String passwordResetRequest(int adminId) {
         // validate admin
@@ -134,6 +173,15 @@ public class AdminServiceImpl implements AdminService {
         return "An OTP was sent to your email. Use the OTP to reset your password";
     }
 
+    /**
+     * In this function otp is verified and in case if otp is invalid then InvalidOTPException
+     * if otp is verified then the new password is reset in database.
+     * @param adminId
+     * @param otp
+     * @param newPassword
+     * @return After resetting password String is returned "Password was changed."
+     * @throws InvalidOTPException
+     */
     @Override
     public String resetPassword(int adminId, String otp, String newPassword) throws InvalidOTPException {
         // validate admin
@@ -157,6 +205,14 @@ public class AdminServiceImpl implements AdminService {
         return "Password was changed.";
     }
 
+    /**
+     * In this function admin can add/register new Employee hired in the organisation.
+     * After the registering employee, an email is sent to employee registered email with details.
+     *
+     * @param request
+     * @return after registering the employee String "Employee was registered with employee ID." with
+     * system generated employee ID.
+     */
     @Override
     public String addNewEmployee(NewEmployeeRequest request) {
         String password = request.getPassword();
@@ -197,6 +253,13 @@ public class AdminServiceImpl implements AdminService {
         return "Employee was registered with employee ID "+savedEmployee.getEmpId()+".";
     }
 
+    /**
+     * In this function the employee Designation is created as per the employee Department and
+     * Employment level.
+     * @param department
+     * @param level
+     * @return The Designation of employee is returned in String format.
+     */
     private String defineDesignation(Department department, EmploymentLevel level) {
         String designation = "";
         if(department == Department.SALES){
@@ -257,6 +320,14 @@ public class AdminServiceImpl implements AdminService {
         return designation;
     }
 
+    /**
+     * In this function admin can update the department of the employee.
+     * In case the employee is Transferred from one Department to another.
+     * Employement level and salary may also change.
+     * @param empId
+     * @param newDepartment
+     * @return String is returned "Employee's department and salary details were changed."
+     */
     @Override
     public String updateDepartment(int empId, Department newDepartment) {
         // validate employee
@@ -293,6 +364,13 @@ public class AdminServiceImpl implements AdminService {
         return false;
     }
 
+    /**
+     *  In this function employee level can be promoted and these level are fixed using
+     *  EmploymentLevel enum.
+     * @param empId
+     * @param newLevel
+     * @return String is returned if functions works "Employee's employment level and salary details were changed."
+     */
     @Override
     public String updateEmploymentLevel(int empId, EmploymentLevel newLevel) {
         // validate employee
@@ -322,6 +400,13 @@ public class AdminServiceImpl implements AdminService {
         return "Employee's employment level and salary details were changed.";
     }
 
+    /**
+     * In this function the user input provided as employee level is checked with
+     * available employee level in EmploymentLevel enum.
+     * @param newLevel
+     * @return returns a boolean value.
+     */
+
     private boolean isLevelValid(EmploymentLevel newLevel) {
         for(EmploymentLevel level : EmploymentLevel.values()){
             if(level.equals(newLevel)) return true;
@@ -329,6 +414,12 @@ public class AdminServiceImpl implements AdminService {
         return false;
     }
 
+    /**
+     * In this function Admin can update the Employee Access status to GRANTED or RESTRICTED.
+     * If account status is Restricted then Employee will not be able to Login into account
+     * @param empId
+     * @return String is returned based on access type.
+     */
     @Override
     public String updateEmployeeAccess(int empId) {
         // validate employee
@@ -349,6 +440,12 @@ public class AdminServiceImpl implements AdminService {
         }
     }
 
+    /**
+     * In this records can be viewed of employee Unpaid leaves.
+     * @param empId
+     * @param leaves
+     * @return returns a String.
+     */
     @Override
     public String recordUnpaidLeave(int empId, int leaves) {
         // validate employee
@@ -364,6 +461,12 @@ public class AdminServiceImpl implements AdminService {
         return leaves+" Leave(s) was recorded in account of employee with ID "+employee.getEmpId()+".";
     }
 
+    /**
+     *  In this function due salary of employee can be viewed by admin.
+     *
+     * @param empId
+     * @return Object of DueSalaryDetails is Returned by Converter Class method.
+     */
     @Override
     public DueSalaryDetails seeDueSalaryOfAnEmployee(int empId) {
         // validate employee
@@ -379,6 +482,13 @@ public class AdminServiceImpl implements AdminService {
         return Converter.prepareDueSalaryDetails(employee, salary);
     }
 
+    /**
+     * In this function previous records of Employee can be viewed and
+     * previous due salary can be calculated.
+     * @param empId
+     * @param amount
+     * @return A String object is returned.
+     */
     @Override
     public String recordPreviousDueOfAnEmployee(int empId, float amount) {
         // validate employee
@@ -398,6 +508,12 @@ public class AdminServiceImpl implements AdminService {
         return "A due payment of "+amount+" was recorded in the account of employee with ID "+empId+".";
     }
 
+    /**
+     * In this function Employee is paid with his/her salary and payslip is generated.
+     * In Converter class preparePaySlip method creates the payslip.
+     * @param empId
+     * @return Object of PaySlipReplica DTO class is returned.
+     */
     @Override
     public PaySlipReplica paySalaryAndGeneratePaySlipOfAnEmployee(int empId) {
         // validate employee
@@ -420,6 +536,12 @@ public class AdminServiceImpl implements AdminService {
         return Converter.preparePaySlipReplica(savedPaySlip);
     }
 
+    /**
+     * In this function admin can view the salary structure pf an employee.
+     * Converter class prepareSalaryReplica method is used.
+     * @param empId
+     * @return SalaryReplica DTO class object is returned.
+     */
     @Override
     public SalaryReplica seeSalaryStructureOfAnEmployee(int empId) {
         // validate employee
@@ -432,6 +554,10 @@ public class AdminServiceImpl implements AdminService {
         return Converter.prepareSalaryReplica(employee);
     }
 
+    /**
+     * In this function admin can view overall due salaries of each and every employee.
+     * @return AllDueSalaries DTO class object is returned is this method.
+     */
     @Override
     public AllDueSalaries seeDueSalaries() {
         // get a list of all employees
@@ -452,6 +578,11 @@ public class AdminServiceImpl implements AdminService {
                 .build();
     }
 
+    /**
+     * In this function admin can view payment records of particular employees.
+     * @param empId
+     * @return AllPaymentRecords is a DTO class and its object will be returned.
+     */
     @Override
     public AllPaymentRecords seePaymentRecordsOfAnEmployee(int empId) {
         // validate employee
@@ -477,6 +608,10 @@ public class AdminServiceImpl implements AdminService {
                 .build();
     }
 
+    /**
+     * In this function admin can view payment records of particular employees.
+     * @return AllPaymentRecords is a DTO class and its object will be returned.     *
+     */
     @Override
     public AllPaymentRecords seePaymentRecords() {
         // get a list of all employees
@@ -499,6 +634,11 @@ public class AdminServiceImpl implements AdminService {
                 .build();
     }
 
+    /**
+     * In this function employee details can be deleted by admin.
+     * @param empId
+     * @return String with message is returned.
+     */
     @Override
     public String deleteAnEmployee(int empId) {
         // validate employee
@@ -512,6 +652,12 @@ public class AdminServiceImpl implements AdminService {
         return "Employee with ID "+empId+" was deleted from database.";
     }
 
+    /**
+     * This function is used to view Admin account details,
+     * Converter class prepareAdminDetails method is called.
+     * * @param adminId
+     * @return function returns AdminDetails class object.
+     */
     @Override
     public AdminDetails seeAccountDetails(int adminId) {
         // validate admin

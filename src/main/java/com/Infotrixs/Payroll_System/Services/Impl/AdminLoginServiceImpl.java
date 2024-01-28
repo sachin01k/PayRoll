@@ -20,6 +20,17 @@ public class AdminLoginServiceImpl implements AdminLoginService {
         this.contextHolder = contextHolder;
     }
 
+    /**
+     * This function takes an Admins username and password as authentication credentials,
+     * matches it with the username and password corresponding to that admin and returns
+     * name and Admin ID of that employee.
+     * @return DTO AdminLoginDetails which has two fields; Employee's name and ID.
+     *
+     * The function takes Admins username and password, Spring security validates it. If the
+     * credentials are valid, the function extracts Employee using the username from the DB. Then
+     * it copies Admin name and ID into DTO AdminLoginDetails and send to user.
+     * @return
+     */
     @Override
     public AdminLoginDetails adminLogin() {
         // extract employee username from the authentication details
