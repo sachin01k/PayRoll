@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.springframework.jdbc.support.JdbcUtils.isNumeric;
+
 
 
 public class ViewCurrentDueSalariesController {
@@ -214,10 +214,7 @@ public class ViewCurrentDueSalariesController {
             return;
         }
 
-        if (!isNumeric(Integer.parseInt(searchText))) {
-            displayError(new Exception("Employee ID can only be numeric"));
-            return;
-        }
+
 
         if (!searchText.isEmpty()) {
             ObservableList<Salary> filteredData = salaryTableView.getItems().filtered(

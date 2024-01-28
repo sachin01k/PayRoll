@@ -16,7 +16,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import static org.springframework.jdbc.support.JdbcUtils.isNumeric;
+
 
 public class SalaryStructureController {
 
@@ -63,10 +63,7 @@ public class SalaryStructureController {
             return;
         }
 
-        if (!isNumeric(Integer.parseInt(employeeIdText))) {
-            displayError(new Exception("Employee ID can only be numeric"));
-            return;
-        }
+
 
         try {
             int employeeId = Integer.parseInt(employeeIdText);

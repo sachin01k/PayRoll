@@ -120,7 +120,7 @@ public class ResetPasswordController {
 
         // Make API call for password reset
         String endpoint = userType.toLowerCase() + "/reset-password/" + userType.toLowerCase() + "-id/" + userId.getText() +
-                "/otp/P-" + otpField.getText() + "/new-password/" + newPasswordField.getText();
+                "/otp/" + otpField.getText() + "/new-password/" + newPasswordField.getText();
 
         // Make the API call with an empty request body
         try {

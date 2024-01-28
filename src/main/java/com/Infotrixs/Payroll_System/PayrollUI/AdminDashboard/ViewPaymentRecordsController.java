@@ -23,8 +23,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.springframework.jdbc.support.JdbcUtils.isNumeric;
-
 public class ViewPaymentRecordsController {
 
     @FXML
@@ -163,10 +161,6 @@ public class ViewPaymentRecordsController {
             return;
         }
 
-        if (!isNumeric(Integer.parseInt(searchText))) {
-            displayError(new Exception("Employee ID can only be numeric"));
-            return;
-        }
 
         List<PaySlipReplica> filteredRecords = paymentRecordObservableList.stream()
                 .filter(record -> String.valueOf(record.getEmployeeId()).contains(searchText))

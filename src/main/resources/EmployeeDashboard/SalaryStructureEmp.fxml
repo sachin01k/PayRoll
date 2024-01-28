@@ -84,7 +84,7 @@
         </Label>
         <Label fx:id="convenienceAllowLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-        <Label text="Insurance:" GridPane.rowIndex="6">
+        <Label text="Insurance:" GridPane.rowIndex="5">
             <GridPane.margin>
                 <Insets left="10.0" />
             </GridPane.margin>
@@ -94,7 +94,7 @@
         </Label>
         <Label fx:id="insuranceLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
-        <Label text="In Hand:" GridPane.rowIndex="7">
+        <Label text="In Hand:" GridPane.rowIndex="6">
             <GridPane.margin>
                 <Insets left="10.0" />
             </GridPane.margin>
@@ -104,7 +104,7 @@
         </Label>
         <Label fx:id="inHandLabel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
-        <Label text="Provident Fund (PF):" GridPane.rowIndex="5">
+        <Label text="Provident Fund (PF):" GridPane.rowIndex="7">
             <GridPane.margin>
                 <Insets left="10.0" />
             </GridPane.margin>

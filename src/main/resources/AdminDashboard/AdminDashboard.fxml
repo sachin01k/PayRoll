@@ -34,7 +34,7 @@
 
                 <!-- Use HBox to center the label within the Tab -->
                 <HBox alignment="CENTER" prefHeight="40.0" prefWidth="385.0" />
-                <Label prefHeight="35.0" prefWidth="192.0" text="Payroll Management" textFill="WHITE">
+                <Label prefHeight="35.0" prefWidth="202.0" text="Payroll Management" textFill="WHITE" wrapText="true">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
