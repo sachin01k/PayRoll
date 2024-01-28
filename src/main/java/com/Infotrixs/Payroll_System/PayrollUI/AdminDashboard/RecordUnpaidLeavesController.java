@@ -40,10 +40,7 @@ public class RecordUnpaidLeavesController {
             return;
         }
 
-        if (!isNumeric(employeeIdText) || !isNumeric(leavesText)) {
-            displayError(new Exception("Employee ID and Leaves must be numeric values."));
-            return;
-        }
+
 
         int employeeId = Integer.parseInt(employeeIdText);
         int leaves = Integer.parseInt(leavesText);
@@ -51,12 +48,6 @@ public class RecordUnpaidLeavesController {
         handleRecordUnpaidLeaveApiCall(employeeId, leaves);
     }
 
-    /*
-     * Checks if a given string is a numeric value.
-     */
-    private boolean isNumeric(String str) {
-        return str.matches("\\d+");
-    }
 
     /*
      * Sends a request to the server to record unpaid leaves for a specific employee.

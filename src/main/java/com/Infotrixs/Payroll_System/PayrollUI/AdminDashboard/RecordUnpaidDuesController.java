@@ -73,21 +73,8 @@ public class RecordUnpaidDuesController {
             return false;
         }
 
-        // Validate if inputs are numeric
-        if (!isNumeric(employeeIdText) || !isNumeric(duesAmountText)) {
-            displayError(new Exception("Employee ID and Dues Amount must be numeric values."));
-            return false;
-        }
 
         return true;
-    }
-
-    /*
-     * Checks if a given string is a numeric value.
-     */
-    private boolean isNumeric(String str) {
-        // Check if a string contains only numeric characters
-        return str.matches("\\d+(\\.\\d+)?");
     }
 
     /*

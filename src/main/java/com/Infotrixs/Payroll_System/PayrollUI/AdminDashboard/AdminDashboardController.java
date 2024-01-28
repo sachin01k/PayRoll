@@ -359,7 +359,20 @@ public class AdminDashboardController implements Initializable {
     // Functionality 9: Delete an Employee
     @FXML
     private void handleDeleteEmployee() {
+        try {
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminDashboard/DeleteEmployee.fxml"));
+            Parent DeleteEmployeeRoot = loader.load();
+
+
+
+            content.getChildren().setAll(DeleteEmployeeRoot);
+
+            toggleNavigation();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Functionality 10: Logout
