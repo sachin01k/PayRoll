@@ -23,8 +23,10 @@ But, in case you want to use a different email for sending emails, you can make 
 **Code Structure**
 
 The business logic of the app is written following the MVC architecture. It has multiple packages to categorize the relevant classes and enums. We have separate packages for model classes, controller, service classes, DTOs, Exceptions, enums, UI, and other utility classes.
+
 Standard naming conventions have been followed in naming the variables, functions and classes that describe their uses and functionalities. 
-Comprehensive and detailed in-line and document comments have been added at the code level to better understand the functionalities of functions, what input they take, what output they give and how they achieve things. You can refer to the code for detailed technical documentations.
+
+Comprehensive and detailed in-line and document comments have been added at the code level to better understand the functionalities of functions, what input they take, what output they give and how they achieve things. You can refer to the code for detailed technical documentation.
 
 **Contributors**
 
